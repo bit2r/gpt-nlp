@@ -1,0 +1,17 @@
+project:
+  type: book
+  output-dir: docs
+
+lang: ko-KR
+
+book:
+  title: "챗GPT 자연어처리"
+  chapters:
+    - index.qmd
+    - chap_exams.qmd
+    # - chap_intro_bitpublish.qmd
+    # - chap_troubleshooting.qmd
+    # - chap_version.qmd
+    # - chap_solve_exercise.qmd
+bibliography: references.bib
+link-citations: false

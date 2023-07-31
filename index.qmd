@@ -1,0 +1,7 @@
+# 머리말 {.unnumbered}
+
+뉴스토마토 뉴스 데이터 패키지 BitTomato,^[https://github.com/bit2r/bitTomato/] 
+텍스트 자연어 처리 R 패키지 BitNLP,^[https://github.com/bit2r/bitNLP] 
+R 텍스트마이닝(book_tm) ^[https://github.com/bit2r/book_tm] 전자책을 발판으로 
+챗GPT를 더해 BitPublish^[https://github.com/bit2r/bitPublish]를 사용해서 오픈 출판 프로젝트를 시작합니다.
+

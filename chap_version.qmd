@@ -1,0 +1,109 @@
+# Version {#sec-version}
+
+```{r init, include=FALSE}
+# source(here::here("_extensions", "bitPublish", "init_environments.R"))
+source(here::here("_extensions", "bit2r", "bitPublish", "init_environments.R"))
+```
+
+이 장에서는 `bitPublish'의 버전에 대한 정보를 제공합니다.
+
+## version 0.1
+
+### version 0.1.2
+
+- **2023-05-27**
+
+- 예제 문서에 버전 정보를 담은 chapter 추가
+    - chap_version.qmd
+    
+## version 0.2
+
+### version 0.2.0    
+
+- **2023-06-01**
+
+- pdf와 html에서 공통으로 작동하는 정보 블록 정의
+    - infobox
+        - information, caution, warning, tip
+    - 팬독 청크 이용
+- pdf와 html에서 공통으로 작동하는 이야기 블록 정의
+    - quote_block()
+    - R 함수 이용 
+
+### version 0.2.1    
+
+- **2023-06-05**
+
+- pdf와 html에서 공통으로 작동하는 타이틀 박스 블록 정의
+    - PDF
+        - titlebox 명령
+    - HTML
+        - titlebox 태그
+    - 멀티 아웃 포맷
+        - titlebox_block() 함수
+
+### version 0.2.2
+
+- **2023-06-07**
+
+- Table 크로스-레퍼런스의 구현 (#31)
+- HTML의 일부 크로스-레퍼런스 미적용 문제 및 Latex 패키지 로드 명령이 출력되는 문제 해결 (#29, thanks to youngjinkim81)
+- chapter label을 LaTeX 형식 대신, 멀티 아웃 포맷을 위해서 마크다운 형식으로 변경 
+
+
+### version 0.2.3
+
+- **2023-06-11**
+
+- 유니코드 인덱스를 처리하는 방법 개선
+    - 초성을 기준으로 찾아보기 정상적으로 동작 
+    - Not Yet
+- 예제 블록의 멀티 아웃 포맷 지원 (#36)
+    - Quarto에서 제공하는 정리(theorems)의 변형을 이용
+    
+### version 0.2.4
+
+- **2023-06-22**
+
+- 유니코드 인덱스를 처리하는 방법 개선 (#32, #44 thanks to 이재호)
+    - 초성을 기준으로 찾아보기 정상적으로 동작 
+
+
+### version 0.2.5
+
+- **2023-06-29**
+
+- HTML 아웃 포맷의 R 그래픽스 비정상 출력 문제 해결  (#30)
+    - ragg 패키지 이용
+    
+    
+### version 0.2.6
+
+- **2023-07-02**
+
+- 참고문헌 reference.bib 출력 관련 이슈 해결  (#46)
+    - HTML 아웃 포맷에서 내용이 없는 참고문헌 chapter 출력문제 해결
+- Github 파일 다운로드로 설치 시의 파일경로 문제 해결 방법 제시  (#45)
+    - 예제 문서의 **Troubleshooting** chapter에 기술
+    
+
+### version 0.2.7
+
+- **2023-07-07**
+
+- table_with_caption() 오류 수정 (#49)
+    - PDF 아웃 포맷에서 테이블의 헤더(변수 이름)가 `iris` 변수 이름으로 출력되는 문제
+    
+
+### version 0.2.8
+
+- **2023-07-13**
+
+- 연습문제 서식 개선 및 연습문제 해답 기능 추가 (#38)
+    - 연습문제 헤더 사용자 정의 지원
+        - 장(chapter) 레벨과 절(section) 레벨 중에서 선택
+        - 연습문제 이름을 사용자가 정의 가능
+            - 기본 이름은 **"연습문제"**이지만, "Exercise" 등으로 변경 가능
+    - 예제 본문에 연습문제 및 연습문제 해답 사용방법 추가
+
+    

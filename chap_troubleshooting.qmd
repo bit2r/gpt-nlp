@@ -1,0 +1,126 @@
+# Troubleshooting {#sec-tshoot}
+
+```{r init, include=FALSE}
+source(here::here("_extensions", "bit2r", "bitPublish", "init_environments.R"))
+```
+
+이 장에서는 \`bitPublish'의 사용시에 발생하는 문제와 해결 방법에 대해서 다룹니다.
+
+```{r}
+#| echo: false
+#| results: asis
+titlebox_block("bitPublish 시 발생하는 문제의 원인을 파악하고 해결할 수 있다.", 
+               title = "학습 목표", theme = "bluejeans")
+```
+
+## Quarto 오류
+
+### TeXlive 버전 이슈
+
+다음처럼 미리보기 명령이나,
+
+```{md}
+quarto preview --to bitPublish-pdf
+```
+
+랜더링 명령에서, 
+
+```{md}
+quarto render --to bitPublish-pdf
+```
+
+아래와 같은 에러가 발생하는 경우가 있습니다.
+
+```{verbatim}
+updating existing packages
+finding package for bclogo.sty
+ERROR: Your TexLive version is not updated enough to connect to the remote 
+repository and download packages. Please update your installation of TexLive 
+or TinyTex.
+
+Underlying message: Local TeX Live (2022) is older than remote repository (2023).
+Cross release updates are only supported with
+  update-tlmgr-latest(.sh/.exe) --update
+See https://tug.org/texlive/upgrade.html for details.
+```
+
+매년 4월 `TeXlive`\index{TeXlive}는 원격저장소를 TeX의 새해 버전으로 업데이트합니다. 이 경우 TeX의 이전 년도 설치본은 원격 저장소에서 패키지를 다운로드/설치할 수 없습니다. 사용자가 `TeXlive` 또는 `TeXlive`는 원격저장소를 이용하는 `TinyTex`\index{TinyTex}을 업데이트 해야 합니다.
+
+`TeXlive`를 사용한다면, 다음 명령으로 `TeXlive`를 업데이트하세요.
+
+```{md}
+update-tlmgr-latest --update
+```
+
+`TinyTex`을 사용한다면, 다음 명령으로 `TinyTex`을 업데이트하세요.
+
+```{md}
+quarto update tinytex
+```
+
+## LaTeX 오류
+
+### 찾아보기 오류
+
+다음과 같이 찾아보기 명령 \\index{}를 사용할 때,
+
+```{tex}
+\index{include_graphics()}
+```
+
+텍스트 내에 언더라인(\_)이 있을 경우 다음과 같은 에러가 발생합니다. 
+ 
+```{verbatim}
+ompilation failed- Error compiling latex
+Missing $ inserted.
+<inserted text> 
+                $
+l.54   \item include_
+                     graphics(), \hyperpage{27} 
+```
+
+문자로서의 언더라인을 기술하기 위해서는 다음과 같이 언더라인에 역 슬래시를 붙여서 기술합니다.
+
+```{tex}
+\index{include\_graphics()}
+```
+
+## 설치 이슈
+
+### bitPublish 파일 다운로드 설치
+
+bitPublish 프로젝트를 만들기 위해서 다음 명령을 수행하면 Github에서 bitPublish가 설치됩니다.
+
+```{md}
+quarto use template bit2r/bitPublish
+```
+
+혹은 다음처럼 기존 문서에 bitPublish extension을 설치하는 명령으로도 Github에서 bitPublish가 설치됩니다.
+
+```{md}
+quarto install extension bit2r/bitPublish
+```
+
+그러나 사용자 PC 환경에서, 보안 프로그램 등의 이슈로 `quarto` 명령 설치에 오류가 발생할 수 있습니다. 이 경우에는 Github으로부터 bitPublish를 다운로드한 후 특정 디렉토리에 복사해서 사용하면 됩니다. 그러나 이 경우에는 다음과 같은 명령에 에러가 발생할 수 있습니다.
+
+- 명령
+
+```{md}
+quarto preview --to bitPublish-pdf
+```
+
+- 에러 메시지의 일부
+
+```{md}
+finding package for STIXTwoText-Regular(-(Bold|Italic|Regular).*)?.
+
+1 package to install
+installing stix2-otf (1 of 1)
+ERROR: tlmgr returned a non zero status code
+```
+
+이러한 에러가 발생한 이유는 `quarto` 명령어로 bitPublish가 설치될 경우에는 `_extensions/bit2r/bitPublish` 경로로 `extensions`이 설치되지만, Github에서 파일을 다운로드해서 실치할 경우에는 `_extensions/bitPublish` 경로로 설치되기 때문입니다.
+
+`bitPublish` `extensions`은 `_extensions/bit2r/bitPublish` 디렉토리에 설치됨을 전제로 개발되었기 때문에 다운로드 설치 시 `_extensions` 디렉토리 안에 `bit2r` 디렉토리를 만들어서 현재의 `_extensions/bitPublish` 경로를 `_extensions/bit2r/bitPublish` 경로로 변경하면 문제가 해결됩니다.
+
+
