@@ -7,7 +7,9 @@ contributes:
     html:
       theme: cosmo
       css: "_extensions/bit2r/bitPublish/style.css"
+      cover-image: code/logo.png
     pdf:
+      cover-image: code/logo.png
       documentclass: book
       geometry:                            # 4x6 배판 도서를 위한 설정
         - paper=a4paper

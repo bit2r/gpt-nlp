@@ -49,3 +49,6 @@ po/*~
 rsconnect/
 
 /.quarto/
+
+# 로고 폰트
+code/fonts
